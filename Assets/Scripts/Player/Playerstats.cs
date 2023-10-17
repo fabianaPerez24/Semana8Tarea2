@@ -6,7 +6,7 @@ public class Playerstats : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    private float speed;
+    public float speed;
     private Rigidbody2D rb2d;
     [SerializeField]
     public GameObject bulletPrefab;
@@ -17,6 +17,11 @@ public class Playerstats : MonoBehaviour
     public int life;
 
     // Update is called once per frame
+
+    private void Awake()
+    {
+        rb2d = GetComponent<Rigidbody2D>();
+    }
     void Update()
     {
         Move();
@@ -47,7 +52,7 @@ public class Playerstats : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        rb2d.velocity = new Vector2(horizontal, vertical);
+        rb2d.velocity = new Vector2(horizontal, vertical)*speed;
  
    }
     void timer()
