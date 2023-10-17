@@ -1,15 +1,23 @@
+using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class Enemy1 : MonoBehaviour
 {
     [SerializeField]
     private int life;
+
     public Rigidbody2D rb2d;
     public float speed;
     public Vector2 direction;
-    private void Awake()
+
+    public float timer;
+    public float maxtimer;
+
+   
+        private void Awake()
     {
         rb2d= GetComponent<Rigidbody2D>();
     }
@@ -31,13 +39,24 @@ public class Enemy1 : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+    }
         void Update()
         {
             Move();
+            ChangeDirection();
         }
         void Move()
         {
             rb2d.velocity = direction*speed;
         }
-    }
+        void ChangeDirection() 
+        {
+            timer += Time.deltaTime;
+            if (timer>=maxtimer)
+            {
+                direction *= -1;
+            timer=0;
+            }
+        }
+    
 }
