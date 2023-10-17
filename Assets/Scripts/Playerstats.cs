@@ -14,10 +14,7 @@ public class Playerstats : MonoBehaviour
     private float shootTimer;
     private float shootDelayTime;
 
-    void Start()
-    {
-        
-    }
+    public int life;
 
     // Update is called once per frame
     void Update()
@@ -26,7 +23,26 @@ public class Playerstats : MonoBehaviour
         timer();
         Shoot();
     }
-   void Move()
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            life--;
+            if(life < 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+        if (collision.gameObject.CompareTag("Enemybullet"))
+        {
+            life--;
+            if (life < 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+    public void Move()
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
