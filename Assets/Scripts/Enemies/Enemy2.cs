@@ -14,6 +14,9 @@ public class Enemy2 : MonoBehaviour
     public float timer;
     public float maxtimer;
 
+    public float timerBala;
+    public float maxtimerBala;
+
     public GameObject enemybullet;
     private void Awake()
     {
@@ -59,12 +62,13 @@ public class Enemy2 : MonoBehaviour
     }
     void EnemyShoot()
     {
-        timer += Time.deltaTime;
-        if(timer >= maxtimer)
+        timerBala += Time.deltaTime;
+        if(timerBala >= maxtimerBala)
         {
+
             GameObject obj= Instantiate(enemybullet);
             obj.transform.position=transform.position;
-            timer = 0;
+            timerBala = 0;
         }
     }
 

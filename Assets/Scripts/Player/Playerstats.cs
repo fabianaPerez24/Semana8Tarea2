@@ -10,6 +10,7 @@ public class Playerstats : MonoBehaviour
     private Rigidbody2D rb2d;
     [SerializeField]
     public GameObject bulletPrefab;
+    private  Vector2 direction;
 
     private float shootTimer;
     private float shootDelayTime;
@@ -38,7 +39,7 @@ public class Playerstats : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        if (collision.gameObject.CompareTag("Enemybullet"))
+        if (collision.gameObject.CompareTag("EnemyBullet"))
         {
             life--;
             if (life < 0)
@@ -49,10 +50,10 @@ public class Playerstats : MonoBehaviour
     }
     public void Move()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        direction.x  = Input.GetAxis("Horizontal");
+        direction.y = Input.GetAxis("Vertical");
 
-        rb2d.velocity = new Vector2(horizontal, vertical)*speed;
+        rb2d.velocity = new Vector2(direction.x, direction.y)*speed;
  
    }
     void timer()
@@ -64,7 +65,7 @@ public class Playerstats : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && shootTimer >= shootDelayTime)
         {
             GameObject obj = Instantiate(bulletPrefab);
-            obj.transform.position = transform.position;
+            obj.transform.position = new Vector2(direction.x,direction.y);
             shootTimer = 0;
         }
     }
