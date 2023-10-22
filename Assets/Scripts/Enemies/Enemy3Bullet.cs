@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBullet : MonoBehaviour
+public class Enemy3Bullet : MonoBehaviour
 {
     [SerializeField]
     private float speed;
     private Rigidbody2D rb2d;
     [SerializeField]
     private Vector2 direction;
-
-    public Vector2 Direction { set=> direction = value; }
+    
+    public void SetDirection(Vector2 Direction) 
+    {
+        direction = Direction;
+    }
 
     void Awake()
     {
@@ -23,8 +26,16 @@ public class PlayerBullet : MonoBehaviour
     }
     void Move()
     {
-        
+
+
         rb2d.velocity = direction * speed;
     }
-}
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
+    }
 
+}

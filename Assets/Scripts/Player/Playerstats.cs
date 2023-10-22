@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Playerstats : MonoBehaviour
@@ -50,11 +51,12 @@ public class Playerstats : MonoBehaviour
     }
     public void Move()
     {
-        direction.x  = Input.GetAxis("Horizontal");
-        direction.y = Input.GetAxis("Vertical");
+        direction.x  = Input.GetAxisRaw("Horizontal");
+        direction.y = Input.GetAxisRaw("Vertical");
 
         rb2d.velocity = new Vector2(direction.x, direction.y)*speed;
  
+
    }
     void timer()
     {
@@ -65,7 +67,8 @@ public class Playerstats : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && shootTimer >= shootDelayTime)
         {
             GameObject obj = Instantiate(bulletPrefab);
-            obj.transform.position = new Vector2(direction.x,direction.y);
+            obj.transform.position = transform.position + (Vector3) direction ;
+            obj.GetComponent<PlayerBullet>().Direction= direction;
             shootTimer = 0;
         }
     }

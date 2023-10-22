@@ -69,6 +69,12 @@ public class Enemy2 : MonoBehaviour
             GameObject obj= Instantiate(enemybullet);
             obj.transform.position=transform.position;
             timerBala = 0;
+
+            for(int i = 0; i < 2; i++)
+            {
+
+            }
+
         }
     }
 
