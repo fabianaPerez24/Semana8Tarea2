@@ -48,6 +48,16 @@ public class Enemy4 : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+
+        if (collision.gameObject.CompareTag("PlayerBullet2"))
+        {
+            life-=2;
+            if (life < 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+
     }
     void EnemyShoot()
     {

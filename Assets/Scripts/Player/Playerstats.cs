@@ -11,6 +11,8 @@ public class Playerstats : MonoBehaviour
     private Rigidbody2D rb2d;
     [SerializeField]
     public GameObject bulletPrefab;
+
+    public GameObject bulletPrefab2;
     private  Vector2 direction;
 
     private float shootTimer;
@@ -70,6 +72,15 @@ public class Playerstats : MonoBehaviour
             obj.transform.position = transform.position + (Vector3) direction ;
             obj.GetComponent<PlayerBullet>().Direction= direction;
             shootTimer = 0;
+        }
+
+        if(Input.GetKeyDown(KeyCode.Z) && shootTimer>= shootDelayTime)
+        {
+            GameObject obj = Instantiate(bulletPrefab2);
+            obj.transform.position = transform.position + (Vector3)direction;
+            obj.GetComponent<PlayerBullet>().Direction = direction;
+            shootTimer = 0;
+
         }
     }
 }

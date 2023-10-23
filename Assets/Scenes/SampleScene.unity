@@ -798,7 +798,7 @@ Transform:
   m_GameObject: {fileID: 853488248}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.09, y: 2.67, z: 0}
+  m_LocalPosition: {x: 2.84, y: 3.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -988,6 +988,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   bulletPrefab: {fileID: 4986460564182370205, guid: c5f88b85684d35244829e53e348d7eae, type: 3}
+  bulletPrefab2: {fileID: 3652415261339394635, guid: 4fce4bb13b64ccf4f9b291e0619ea050, type: 3}
   life: 3
 --- !u!61 &1715018939
 BoxCollider2D:
